@@ -1,0 +1,61 @@
+实现文字前后一段文字的分割线,
+1使用display:inline-block,vertical-align:middle实现居中对齐
+<div class="line">
+    <div></div>
+    文案内容
+    <div></div>
+</div>
+
+<style type="less">
+.line{
+    text-align:center
+    div{
+        display:inline-block;
+        width:10%;
+        vertical-align:middle;
+        border:1px solid #ddd;
+    }
+}
+*推荐，横线宽度可变
+</style>
+2.line-height:1px限定高度，左右设置border
+<div class="line">
+    文案内容
+</div>
+<style>
+    .line{
+        line-height:1px;
+        border-left:100px solid #ddd;
+        border-right:100px solid #ddd;
+    }
+</style>
+3.after,before伪元素
+
+.@{cls}-fake{
+            text-align: center;
+            &:before,&:after{
+                content:'';
+                width:30px;
+                height:1px;
+                border-bottom:1px solid #ddd;
+                vertical-align: middle;
+                display: inline-block;
+
+            }
+        }
+4,浮动三个元素
+        .@{cls}-fake{
+            position: relative;
+           
+            div{
+                float: left;
+            }
+            .line{
+                width:30px;
+                vertical-align: middle;
+                border-bottom:1px solid #ddd;
+                margin-top:12px;
+              
+            }
+        }
+其他的（浮动啊，绝对定位啊）就不说了，推荐前两个
