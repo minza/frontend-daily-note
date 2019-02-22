@@ -3,7 +3,7 @@
     display: -webkit-box;            //注意不支持IE浏览器
     text-overflow: ellipsis;
     -webkit-line-clamp:3;
- /* autoprefixer: off */            //这里有个坑，postcss会增加兼容性css头
-    -webkit-box-orient: vertical;   //也会删掉一部分老的属性，所以必须加注释避开，或者在配置的时候配置不删掉属性
- /* autoprefixer: on */
+ /* autoprefixer: off */            //这里有个坑
+    -webkit-box-orient: vertical;   //postcss会增加兼容性css头,也会处理一些老旧的属性
+ /* autoprefixer: on */             //这样eslint会有报错
 }
