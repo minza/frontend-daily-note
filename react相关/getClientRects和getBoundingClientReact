@@ -1,0 +1,2 @@
+getClientRects返回元素下的每一个盒子的边界矩形的矩形集合，包括top,left,right,bottom等信息（相对于视口），可用来行内元素判断有几行
+getBoundingClientRect返回元素的大小和相对视口的距离（不包括滚动区域）,有点相当于块级元素上的getClientRects
