@@ -1,0 +1,35 @@
+重排是浏览器重新计算节点的信息，
+重绘是将节点的集合信息转化为像素信息给GPU渲染
+
+
+什么时候触发
+重绘是几何信息不变，只改变颜色等
+重排一定会触发重绘，只有几何信息变化就会触发重排，例如文本，大小位置变化等等，除此之外还有一些几种情况
+1访问offsetleft等
+2访问client等
+3访问scrolltop等
+4getComputedStyle
+5getBoundingClientRect
+
+优化方案：
+1先把修改元素设置为display：none，集中操作，修改完之后在设置block
+2.document.createDocumentFragment,
+3css-text（el.style.cssText = 'font-size:1px;border:1px solid #ddd'）
+4.document.cloneNode克隆个节点，在节点上操作，完了替换原节点
+
+其实现代浏览器都很智能，他们会使用队列来存储更改，进行优化，所以上面4种方法其实不用考虑。。。。
+可以用一下两个方案来考虑
+1.避免使用同步布局事件
+比如：
+function initLi(list){
+    for(var i=0,i<list.length,i++){
+        List[i].style.width = document.getElementById('fuck').width;
+    }
+}
+可以优化为
+var fuck_dom = document.getElementById('fuck')
+function init(list){
+    for(var i = 0,i<list.length,i++){
+        lsit[i].style.width = fuck_dom.style.width;
+    }
+}
