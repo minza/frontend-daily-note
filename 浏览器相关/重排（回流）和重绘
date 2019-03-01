@@ -18,7 +18,7 @@
 4.document.cloneNode克隆个节点，在节点上操作，完了替换原节点
 
 其实现代浏览器都很智能，他们会使用队列来存储更改，进行优化，所以上面4种方法其实不用考虑。。。。
-可以用一下两个方案来考虑
+可以用一下三个方案来考虑
 1.避免使用同步布局事件
 比如：
 function initLi(list){
@@ -33,3 +33,10 @@ function init(list){
         lsit[i].style.width = fuck_dom.style.width;
     }
 }
+2给复杂动画脱离文档流，position:absolute等
+3开启硬件加速
+硬件加速可以让部分属性不发生重排
+will-change,transform,filter,opacitity等，也能优化background等属性变化
+注意点:
+1。开启硬件加速过多话占用很多内存，影响性能
+2。硬件加速会影响字体的抗锯齿，GPU和CPU的算法不一样,应该在动画完成之后关闭加速
