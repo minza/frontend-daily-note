@@ -1,0 +1,6 @@
+让node默认开启严格模式
+node --use_strict filename
+
+nodejs使用commonjs
+module.export = modulename;   //导出
+var module = require('./module)    //引用
