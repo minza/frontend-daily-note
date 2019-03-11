@@ -1,0 +1,5 @@
+npm install -g nodemon
+modemon xxxx.js
+rs   //重启
+
+nodemon会监控执行目录下的所有文件，有文件发生改动就会重启node服务
