@@ -1,0 +1,32 @@
+今日笔记
+    node是基于commonjs
+    基本模块
+        fs:
+            fs.readFile,fs.writeFile（'some.txt','utf-8',()=>{}）
+            stream:
+            var rs = fs.createReadStream('sometext','utf-8');
+            res.on('data',()=>{})
+            res.on('end',()=>{})
+            res.on('error',()=>{}),
+        ws
+            var ws = fs.createWriteStream('some.txt','utf-8');
+            ws.write(new Buffer('牛逼克拉斯'，‘utf-8’))
+            ws.write(new Buffer('end','utf-8'))
+            ws.end()
+        pipe:数据自动从读流写到文件里
+            var rs = fs.createReadStream('some.txt')
+            var ws = fs.createWriteStream('some.txt')
+            fs.pipe(ws)
+        http:
+            var server = http.createServer((req,res)=>{
+                res.writeHead('content-Tpe':'text/html');
+                res.end('<h1>hello,my master</h1>')
+            })
+        path:处理文件路径
+            var path = path.resolve('.')   //解析当前路径
+        crypto:加密解密模块
+
+
+
+http请求每个header用/r/n来分割，两个分隔符(/r/n/r/n)结束header,后面全是body,http响应如果包含body,也是用/r/n/r/n来分隔的
+注意body的响应类型是由content-type来区分的；
