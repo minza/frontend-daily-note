@@ -1,7 +1,14 @@
 var koa = require('koa');
 var Router = require('koa-router');
 var bodyParser = require('koa-bodyparser');
-const logger = require('koa-logger');
+var rp = require('request-promise');
+var logger = require('koa-logger');
+var cheerio = require('cheerio');
+var iconv = require('iconv-lite')
+var async = require('async');
+var superagent = require('superagent');
+
+
 //var session = require('koa-session');
 //var views = require('koa-views')    //处理模版的中间件，支持ejs。nunjucks
 //var statics = require('koa-static')  //处理静态文件的插件
@@ -30,9 +37,23 @@ var router = new Router();
 //app.use(session(CONFIG,app));
 app.use(bodyParser());
 app.use(logger());
-router.get('/query/:query',(ctx,next) => {
-    ctx.body = ctx.params.query
+
+router.get('/query/:query',async (ctx,next)=>{
+    let query = ctx.params.query;
+    let title = superagent.get('https://list.tmall.com/search_product.htm?q=111&type=p&vmarket=&spm=875.7931836%2FB.a2227oh.d100&from=mallfp..pc_1_searchbutton').end(
+        function(err,res){
+            if(err){
+                return console.log(err);
+            }
+            let $ = cheerio.load(res.text);
+            let title =  $('title').text();
+            console.log('title',$('title').text());
+            return title;
+        }
+    )
+    ctx.body = 'title';
 })
+
 app.use(router.routes()).use(router.allowedMethods());
 console.log('node is listening at port 3002');
 app.listen(3002)

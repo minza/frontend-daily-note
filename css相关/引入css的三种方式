@@ -1,0 +1,5 @@
+行内样式，内联样式表，外部样式表（link,@important）
+外部样式表的区别，
+link是xhtml，所有浏览器走支持，@important是css2.1的内容，老浏览器不支持
+link是立马下载立马解析的，@important是先加载完html再加载css
+两者的优先级是就近原则，谁的解析靠后谁生效

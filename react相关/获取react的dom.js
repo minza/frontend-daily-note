@@ -9,3 +9,21 @@ this.refs.refname
 3//react的方法
 import {ReactDOM} from 'react-dom'
 ReactDOM.findDOMNode(somedom)   //somedom有两种情况，1dom直接返回dom,2组件名的话返回render方法的dom
+
+
+getList()
+var p = new Promise((resolve,reject)=>{
+    getList().then((res)=>{resolve(res)})
+}).then(res=>{
+    
+})
+function getPromiseList(data){
+    let data = res.dataList;
+    const arr = data.map(item=>{
+        return new Promise((resolve,reject)=>{
+            var data = getDatail()
+            resolve(data)
+        })
+    })
+    return arr;
+}
