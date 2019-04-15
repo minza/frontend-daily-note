@@ -2,7 +2,7 @@
 
 第一步，下载工具，https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-darwin-amd64.zip
 第二步，解压工具包，unzip ngrok.zip   //同一集目录下
-第三步，建立配置，/ngrok authtoken 5LAVHQRAFBWhcmGc2vRPG_4qAkedbGbbmRCmAdGURQJ
+第三步，建立配置，/ngrok authtoken **你自己的token**
 第四步，启动监听对应本地端口，生成公网域名    ./ngrok http 80
 
 这里面功能多多，就是转发之后慢了一点。。。毕竟经过了几次转发
