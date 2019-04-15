@@ -1,0 +1,46 @@
+rem是移动端适配比较好的解决方案
+原理是rem单位的原生会根据根原生的font-size来计算；
+比如375宽度的设计稿上一个元素的高度是50px;那么在750宽度屏幕上就应该是100px；
+举例：我们可以在375的时候给跟元素的font-size50px，750的时候给根font-size100px；那么这个元素的高度我们只需要设置为1rem即可
+
+具体的写法:
+window.config = {
+    width:375,
+    font-size:37.5
+}
+(function(w){
+    var _config = {};
+    var com = {
+        init:function(){
+            this.setRem;
+        },
+        setRem:function(){
+            if(!config||!config.width||!config.font){
+                _config = {
+                    width:375,
+                    font:37.5
+                }
+            }
+            else{
+                _config = w.config;
+            }
+            this.fixRem();
+            var self = this;
+            if(window.addEventListen){
+                window.addEventListen('resize',self.fixRem,false)
+            }
+            else{
+                window.AttachEvent('resize',self.fixRem)
+            }
+        },
+        fixRem:function(){
+            var width = window.documentElement.width|| window.innerWith || window.body.clientWidth;
+            var rootSize = this._config.font*(_width/width)
+            document.getElementByTagName('html')[0].style.fontSize = rootSize+'px';
+        }
+    }
+    com.init();
+    
+    
+
+})(window)
