@@ -15,8 +15,8 @@ getList()
 var p = new Promise((resolve,reject)=>{
     getList().then((res)=>{resolve(res)})
 }).then(res=>{
-    
-})
+    return Promise.all(getPromiseLis(res))
+}).then()
 function getPromiseList(data){
     let data = res.dataList;
     const arr = data.map(item=>{

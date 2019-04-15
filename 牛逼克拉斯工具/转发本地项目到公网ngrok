@@ -5,8 +5,8 @@
 第三步，建立配置，/ngrok authtoken 5LAVHQRAFBWhcmGc2vRPG_4qAkedbGbbmRCmAdGURQJ
 第四步，启动监听对应本地端口，生成公网域名    ./ngrok http 80
 
-
 这里面功能多多，就是转发之后慢了一点。。。毕竟经过了几次转发
-但是用来调试本地项目十分合适，react和vue之类的， 棒棒哒
+但是用来调试本地项目十分合适，react和vue之类的
+， 棒棒哒
 
 官网地址https://dashboard.ngrok.com/get-started
