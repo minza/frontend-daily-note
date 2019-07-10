@@ -25,3 +25,25 @@ function throttle(fn,wait = 50){   //将对传入的函数作节流控制
 const betterFn = throttle(()=>{console.log('doing'),1000})   
 setInterval(betterFn,10)  //10秒尝试触发一次
 ```
+
+> 方法二：通过定时器实现
+
+```
+function throttle(fn,wait = 50){   //将对传入的函数作节流控制
+
+  let previce 
+
+  return (...args)=>{
+      if(previce){
+          return
+      }
+      previce = setTimeout(()=>{
+          previce = null
+          fn.apply(this,args)
+      },wait)
+  }
+  
+}
+const betterFn = throttle(()=>{console.log('doing'),1000})   
+setInterval(betterFn,10)  //10秒尝试触发一次
+```
