@@ -1,0 +1,17 @@
+{
+  "name": "may",
+  "version": "1.0.0",
+  "description": "",
+  "main": "0417.js",
+  "dependencies": {
+    "koa": "^2.11.0",
+    "koa-static": "^5.0.0",
+    "nodemailer": "^6.4.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
