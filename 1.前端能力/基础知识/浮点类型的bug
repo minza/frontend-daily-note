@@ -1,0 +1,33 @@
+## 0.1+0.2！==0.3的问题
+
+由于js采用的是IFEEE格式存储浮点类型，所以会出现浮点数转化成二进制的时候变成了无限循环，而js又是64位，所以会丢失一部分的精度。用浮点数计算之后更加会有误差
+
+## 如何用浮点数计算呢，答案是先转化为整数，计算后再转为浮点
+
+```
+function culcateFloat(num1,num2,type){
+    if(!num1 || !num2 || !num3){
+        throw new TypeError('input is nessnary')
+    }
+    functin toInt(num){
+        //返回整数后的
+        return num.indexOf('.')>-1？num * Math.pow(10,num.split('.')[1].length) : num
+    }
+    let l = num1.indexOf('.') > -1？num1.split('.')[1].length: 0
+    let r = num2.indexOf('.') > -1？num2.split('.')[1].length: 0
+    let maxLength = l>r ? l : r
+
+    if(type==='add){
+        return toInt(num1) + toInt(num2) / Math.pow(10,maxLength)
+    }
+    if(type==='min'){
+        return toInt(num1) + toInt(num2) / Math.pow(10,maxLength)
+    }
+    if(type==='muti'){
+        return toInt(num1) * toInt(num2) / Math.pow(Math.pow(10,maxLength),2)
+    }
+    if(type==='divide'){
+        return toInt(num1) / toInt(num2) 
+    }
+}
+```
