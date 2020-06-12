@@ -1,0 +1,39 @@
+## 在以前的javascript版本中，二进制的前三位用来表示类型
+ *000，表示对象
+ *010，表示浮点
+ *100，字符串
+ *110,表示boll
+
+有两个值比较特殊：
+* undefined,用-（-2^32）表示
+* null，用对应机器码的NUll指针，一般是全零
+
+typeof是判断二进制的前三位，所以会把null判断为对象
+
+而后来的javascript虽然改变了写法，但是为了兼容也延续了以前的判断条件
+
+```
+function detectType (obj) {
+    return Object.prototype.toString.call(obj).slice(8, -1).toLowerCase()
+}
+
+function deepClone (parent, obj = {}) {
+    const newObj = Array.isArray(obj) ? [] : {}
+    for (let key in parent) {
+        if (detectType(parent[key]) === 'array') {
+            newObj[key] = parent[key].concat([])
+        } else if (detectType(parent[key]) === 'regexp') {
+            newObj[key] = new parent[key].constructor(obj)
+        } else if (detectType(parent[key]) === 'date') {
+            newObj[key] = new parent[key].constructor(parent[key].getTime())
+        } else if (detectType(parent[key]) === 'object') {
+            const temp = {}
+            newObj[key] = temp
+            deepClone(parent[key], temp)
+        } else {
+            newObj[key] = parent[key]
+        }
+    }
+    return newObj
+}
+```
